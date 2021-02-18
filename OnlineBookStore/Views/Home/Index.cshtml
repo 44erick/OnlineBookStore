@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Online Bookstore";
+}
+@model IQueryable<Project>
+
+<div class="text-center">
+    <h1 class="display-4">Online Bookstore</h1>
+</div>
+
+<!-- Jumbotron Header -->
+<header class="jumbotron my-4">
+    <h1 class="display-3">Show Now!</h1>
+</header>
+
+<!-- Looping through the model to display everything from project model.-->
+<!-- Page Features -->
+<div class="row text-center">
+    @foreach (var x in Model)
+    {
+
+
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">@x.Title</h4>
+                    <p class="card-text">by: @x.Author</p>
+                    <p class="card-text">Publisher: @x.Publisher</p>
+                    <p class="card-text">ISBN: @x.Isbn</p>
+                    <p class="card-text">Classification: @x.Classification</p>
+                    <p class="card-text">Category: @x.Category</p>
+                    <p class="card-text">$@x.Price</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
