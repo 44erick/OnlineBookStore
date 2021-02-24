@@ -15,7 +15,10 @@ namespace OnlineBookStore.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string AuthorFirst { get; set; }
+        [Required]
+        public string AuthorLast { get; set; }
+
         [Required]
         public string Publisher { get; set; }
 
@@ -30,6 +33,8 @@ namespace OnlineBookStore.Models
 
         [Required]
         public double Price { get; set; }
+        [Required]
+        public int Pages { get; set; }
 
     }
 }
