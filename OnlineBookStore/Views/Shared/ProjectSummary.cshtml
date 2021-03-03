@@ -1,0 +1,16 @@
+﻿@model Project
+
+<div class="col-lg-3 col-md-6 mb-4 align-self-md-center">
+    <div class="card h-100">
+        <div class="card-body table-bordered" style="border-color: coral">
+            <h4 class="card-title">@Model.Title</h4>
+            <p class="card-text">by: @Model.AuthorFirst @Model.AuthorLast</p>
+            <p class="card-text">Publisher: @Model.Publisher</p>
+            <p class="card-text">ISBN: @Model.Isbn</p>
+            <p class="card-text">Classification: @Model.Classification</p>
+            <p class="card-text">Category: @Model.Category</p>
+            <p class="card-text">Pages: @Model.Pages</p>
+            <p class="card-text font-weight-bold">$@Model.Price</p>
+        </div>
+    </div>
+</div>

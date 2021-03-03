@@ -19,25 +19,12 @@
     {
 
 
-        <div class="col-lg-3 col-md-6 mb-4 align-self-md-center">
-            <div class="card h-100">
-                <div class="card-body table-bordered" style="border-color: coral">
-                    <h4 class="card-title">@x.Title</h4>
-                    <p class="card-text">by: @x.AuthorFirst @x.AuthorLast</p>
-                    <p class="card-text">Publisher: @x.Publisher</p>
-                    <p class="card-text">ISBN: @x.Isbn</p>
-                    <p class="card-text">Classification: @x.Classification</p>
-                    <p class="card-text">Category: @x.Category</p>
-                    <p class="card-text">Pages: @x.Pages</p>
-                    <p class="card-text font-weight-bold">$@x.Price</p>
-                </div>
-            </div>
-        </div>
+        <partial name="ProjectSummary" model="x"/>
     }
 </div>
 
 <!--Calling paginginfo from model which has all the variables with info for page-model-->
 <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
      page-class-normal ="btn-outline-dark"
-     page-class-selected="btn-primary"
+     page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"
      class="btn-group pull-right m-1"></div>
