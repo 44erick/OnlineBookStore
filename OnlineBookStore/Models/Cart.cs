@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace OnlineBookStore.Models
 {
@@ -9,7 +15,7 @@ namespace OnlineBookStore.Models
     {
         public List<CartLine> Lines { get; set; } = new List<CartLine>();
 
-        public void AddItem(Project proj, int qty)
+        public virtual void AddItem(Project proj, int qty)
         {
             CartLine line = Lines
                 .Where(p => p.Project.BookID == proj.BookID)
@@ -30,14 +36,14 @@ namespace OnlineBookStore.Models
         }
 
 
-        public void RemoveLine(Project proj) =>
+        public virtual void RemoveLine(Project proj) =>
             Lines.RemoveAll(x => x.Project.BookID == proj.BookID);
 
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
 
         //might not work check book instead
-        public decimal ComputeTotalSum() => (decimal)Lines.Sum(e => e.Project.Price * e.Quantity);
- 
+        public decimal ComputeTotalSum() => (decimal)Lines.Sum(e => e.Project.Price * e.Quantity)
+ ;
         public class CartLine
         {
             public int CartLineID { get; set; }
