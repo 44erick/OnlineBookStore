@@ -11,6 +11,19 @@
             <p class="card-text">Category: @Model.Category</p>
             <p class="card-text">Pages: @Model.Pages</p>
             <p class="card-text font-weight-bold">$@Model.Price</p>
+
+
+            <form id="@Model.BookID" asp-page="/Purchase" method="post">
+                <input type="hidden" asp-for="BookID" />
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn-success btn-sm pull-right" style="float:right">
+                    Buy
+                </button>
+            </form>
         </div>
+
     </div>
+
+
 </div>
+

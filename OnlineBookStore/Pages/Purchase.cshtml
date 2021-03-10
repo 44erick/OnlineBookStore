@@ -1,0 +1,44 @@
+﻿@page
+@model OnlineBookStore.Pages.PurchaseModel
+@{
+}
+<!--MVVM model view view model-->
+<h2> Your Cart</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <!--loops through the items in the cart and prints them-->
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td>@line.Project.Title</td>
+                <td>@line.Quantity</td>
+                <td>@line.Project.Price</td>
+                <td>@((line.Quantity * line.Project.Price).ToString("c"))</td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <!--prints the total sum with the tostring command-->
+            <td colspan="3">Total:</td>
+            <td> @Model.Cart.ComputeTotalSum().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+<!--Button to continue shopping-->
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>
+
+<

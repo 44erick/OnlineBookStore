@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//services
 namespace OnlineBookStore
 {
     public class Startup
@@ -29,9 +29,14 @@ namespace OnlineBookStore
 
             services.AddDbContext<OnlineBookStoreDBContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:OnlineBookStoreConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:OnlineBookStoreConnection"]);
             });
             services.AddScoped<IBookRepository, EFBookRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +54,8 @@ namespace OnlineBookStore
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
@@ -74,6 +81,8 @@ namespace OnlineBookStore
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
 
             SeedData.EnsurePopulated(app);
